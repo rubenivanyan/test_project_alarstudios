@@ -13,9 +13,7 @@ module "vpc" {
   private_subnets        = ["10.10.20.0/24", "10.10.40.0/24"]
   enable_dns_hostnames   = true
   enable_dns_support     = true
-  enable_nat_gateway     = true
-  single_nat_gateway     = true
-  one_nat_gateway_per_az = false
+  enable_nat_gateway     = false
   tags = {
     Name = "test_project_alarstudios"
   }
@@ -69,7 +67,7 @@ resource "aws_security_group" "web_sg" {
   description = "Allow http inbound traffic"
   vpc_id      = local.vpc_id
   ingress {
-    description      = "HTTP from anywhere"
+    description      = "HTTP from public subnets"
     from_port        = 8080
     to_port          = 8080
     protocol         = "tcp"
