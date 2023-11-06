@@ -10,12 +10,12 @@
         cache_valid_time: 4000
         state: present
       become: true
-    - name: "install boto3 botocore"
+    - name: "install boto3"
       pip:
         name: "boto3"
         state: present
       become: true
-    - name: "install boto3 botocore"
+    - name: "install botocore"
       pip:
         name: "botocore"
         state: present
@@ -31,6 +31,14 @@
     - name: "install flask"
       pip:
         name: "flask"
+        state: present
+      become: true
+    - name: "install awscli"
+      apt:
+        name: "awscli"
+        update_cache: true
+        force_apt_get: true
+        cache_valid_time: 4000
         state: present
       become: true
     - name: Create a directory if it does not exist
