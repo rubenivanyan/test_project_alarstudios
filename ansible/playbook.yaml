@@ -1,0 +1,49 @@
+---
+- hosts: 'tag_Name_webapp'
+  gather_facts: true
+  tasks:  
+    - name: "install python3-pip"
+      apt:
+        name: "python3-pip"
+        update_cache: true
+        force_apt_get: true
+        cache_valid_time: 4000
+        state: present
+      become: true
+    - name: "install boto3 botocore"
+      pip:
+        name: "boto3"
+        state: present
+      become: true
+    - name: "install boto3 botocore"
+      pip:
+        name: "botocore"
+        state: present
+      become: true
+    - name: "install python3-virtualenv"
+      apt:
+        name: "python3-virtualenv"
+        update_cache: true
+        force_apt_get: true
+        cache_valid_time: 4000
+        state: present
+      become: true
+    - name: "install flask"
+      pip:
+        name: "flask"
+        state: present
+      become: true
+    - name: Create a directory if it does not exist
+      file:
+        path: "/home/ubuntu/flask_aws_storage"
+        state: 'directory'
+        mode: '0755'
+    - name: 'copy project files'
+      copy: 
+        src: "/home/student/test_project_alarstudios/flask_aws_storage/"
+        dest: "/home/ubuntu/flask_aws_storage"
+        mode: '0770'
+    - name: "shell command"
+      shell: 
+        export PATH=~/.local/bin:$PATH
+...
