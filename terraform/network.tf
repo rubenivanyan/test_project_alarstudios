@@ -65,7 +65,7 @@ resource "aws_security_group" "lb_sg" {
 }
 #webapp security group
 resource "aws_security_group" "web_sg" {
-  name        = "lb_sg"
+  name        = "web_sg"
   description = "Allow http inbound traffic"
   vpc_id      = local.vpc_id
   ingress {
@@ -73,14 +73,12 @@ resource "aws_security_group" "web_sg" {
     from_port        = 8080
     to_port          = 8080
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+    cidr_blocks      = ["10.10.10.0/24", "10.10.30.0/24"]
   }
   egress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
-    cidr_blocks      = ["10.10.20.0/24", "10.10.40.0/24"]
-    ipv6_cidr_blocks = ["::/0"]
+    cidr_blocks      = ["10.10.10.0/24", "10.10.30.0/24"]
   }
 }

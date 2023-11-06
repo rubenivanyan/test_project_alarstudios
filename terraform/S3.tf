@@ -23,7 +23,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "mybucket" {
     }
   }
 }
-#Block all publi access
+#Block all public access
 resource "aws_s3_bucket_public_access_block" "mybucket" {
   bucket = aws_s3_bucket.mybucket.id
 

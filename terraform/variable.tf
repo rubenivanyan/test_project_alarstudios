@@ -8,7 +8,7 @@ variable "mykey" {
 }
 variable "health_check_path" {
   type    = string
-  default = "/index.html"
+  default = "/"
 }
 variable "scriptpath" {
   type    = string

@@ -22,6 +22,7 @@ resource "aws_lb_target_group" "webapp" {
   port     = 8080
   protocol = "HTTP"
   vpc_id   = local.vpc_id2
+  target_type = "instance"
   health_check {
     path = var.health_check_path
   }

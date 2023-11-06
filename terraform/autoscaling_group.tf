@@ -3,13 +3,13 @@ resource "aws_launch_configuration" "webapp" {
   name_prefix                 = "lc2"
   image_id                    = data.aws_ami.webapp.id
   instance_type               = "t2.micro"
-  #key_name                    = var.mykey
+  key_name                    = var.mykey
   security_groups             = [aws_security_group.web_sg.id]
   associate_public_ip_address = false
   lifecycle {
     create_before_destroy = true
   }
-  user_data = var.scriptpath
+  user_data = file(var.scriptpath)
 }
 #Create ASG for webapp
 resource "aws_autoscaling_group" "webapp" {
