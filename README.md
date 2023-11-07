@@ -15,8 +15,9 @@ This is a small web application. Using this web application you can easily uploa
 
 ## Steps after infrastructure ready
 1. There is also manual steps))
-2. Create iamuser in aws account with access to s3 bucket
-3. In app servers configure iam user with awscli command aws configure
+2. Register target in target groups in your aws account
+3. Create iamuser in aws account with access to s3 bucket
+4. In app servers configure iam user with awscli command aws configure
 
 ## Extras
 
